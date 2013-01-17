@@ -9,45 +9,45 @@ public class CarTest {
 
     @Before
     public void setUp() throws Exception {
-        car = new Car();
+        car = new Car(new StoppedStatus());
     }
 
     @Test
     public void shouldPrintDownWhenCarIsStop() {
-        assertThat(car.display(), Is.is("The car is down"));
+        assertThat(car.displayStatus(), Is.is("The car is down"));
     }
 
     @Test
     public void shouldPrintDownWhenCarIsStopAndFire(){
         car.fire();
-        assertThat(car.display(),Is.is("The car is down"));
+        assertThat(car.displayStatus(),Is.is("The car is down"));
     }
 
     @Test
     public void shouldPrintDownWhenCarIsStopAndGear () {
         car.gear();
-        assertThat(car.display(), Is.is("The car is down"));
+        assertThat(car.displayStatus(), Is.is("The car is down"));
     }
 
 
     @Test
     public void shouldPrintStartedWhenCarIsStarted() throws Exception {
         car.start();
-        assertThat(car.display(), Is.is("The car is started"));
+        assertThat(car.displayStatus(), Is.is("The car is started"));
     }
 
     @Test
     public void shouldPrintGearedWhenCarIsStartedAndGeared() throws Exception {
         car.start();
         car.gear();
-        assertThat(car.display(), Is.is("The car is geared"));
+        assertThat(car.displayStatus(), Is.is("The car is geared"));
     }
 
     @Test
     public void shouldPrintFiredWhenCarIsStartedAndFired() throws Exception {
         car.start();
         car.fire();
-        assertThat(car.display(), Is.is("The car is fired"));
+        assertThat(car.displayStatus(), Is.is("The car is fired"));
     }
 
     @Test
@@ -55,6 +55,6 @@ public class CarTest {
         car.start();
         car.fire();
         car.gear();
-        assertThat(car.display(), Is.is("The car is moving"));
+        assertThat(car.displayStatus(), Is.is("The car is moving"));
     }
 }
