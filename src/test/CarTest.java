@@ -22,7 +22,7 @@ public class CarTest {
         car.fire();
         assertThat(car.display(),Is.is("The car is down"));
     }
-    
+
     @Test
     public void shouldPrintDownWhenCarIsStopAndGear () {
         car.gear();

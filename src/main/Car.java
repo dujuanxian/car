@@ -1,48 +1,34 @@
 public class Car {
-    private boolean isStarted;
-    private boolean isGeared;
-    private boolean isFired;
-    public static  String MOVING = "The car is moving";
+    public static String MOVING = "The car is moving";
     private static String GEARED = "The car is geared";
     private static String STARTED = "The car is started";
     private static String DOWN = "The car is down";
     private static String FIRED = "The car is fired";
+    private String status;
 
     public Car() {
-        isStarted = false;
-        isGeared = false;
-        isFired = false;
+        status = DOWN;
     }
 
     public String display() {
-        if(isFired && isGeared) {
-            return MOVING;
-        }
-        if(isGeared){
-            return GEARED;
-        }
-        if (isFired) {
-            return FIRED;
-        }
-        if(isStarted) {
-            return STARTED;
-        }
-        return DOWN;
+        return status;
     }
 
     public void fire() {
-        if(isStarted){
-            isFired = true;
+        if (status.equals(STARTED)){
+            status = FIRED;
         }
     }
 
     public void gear() {
-        if(isStarted){
-            isGeared = true;
+        if (status.equals(STARTED)) {
+            status = GEARED;
+        } else if (status.equals(FIRED)) {
+            status = MOVING;
         }
     }
 
     public void start() {
-        isStarted = true;
+        status = STARTED;
     }
 }
